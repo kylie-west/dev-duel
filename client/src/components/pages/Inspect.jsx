@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Page } from "./pageStyles";
+import { Page, Container } from "./pageStyles";
 import { Input, Button } from "../../components";
 import { inspectUser } from "../../services/userService";
 
@@ -7,14 +7,18 @@ const Inspect = ({ devs, setDevs }) => {
 	const [inputValue, setInputValue] = useState("");
 
 	const handleClick = async e => {
-		const user = await inspectUser(inputValue);
-		setDevs({ ...devs, dev1: user });
+		if (!inputValue) {
+			console.error(" Must enter a username to inspect");
+		} else {
+			const user = await inspectUser(inputValue);
+			setDevs({ ...devs, dev1: user });
+		}
 		setInputValue("");
 	};
 
 	return (
 		<Page>
-			<div>
+			<Container gap="50px" direction="column">
 				<Input
 					type="text"
 					placeholder="username"
@@ -22,7 +26,7 @@ const Inspect = ({ devs, setDevs }) => {
 					onChange={e => setInputValue(e.target.value)}
 				/>
 				<Button onClick={handleClick}>Inspect</Button>
-			</div>
+			</Container>
 		</Page>
 	);
 };
