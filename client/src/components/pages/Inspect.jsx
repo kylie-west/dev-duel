@@ -11,6 +11,8 @@ import { inspectUser } from "../../services/userService";
 import Card from "../Card/Card";
 
 const Inspect = ({ devs, setDevs }) => {
+	const dev = devs.dev1;
+
 	const [inputValue, setInputValue] = useState("");
 
 	const handleClick = async e => {
@@ -35,10 +37,10 @@ const Inspect = ({ devs, setDevs }) => {
 				<Button onClick={handleClick}>Inspect</Button>
 			</Container>
 			<Container>
-				{devs.dev1 && (
-					<Card>
-						<Profile dev={devs.dev1} />
-						<Properties dev={devs.dev1} />
+				{dev && (
+					<Card dev={dev}>
+						<Profile dev={dev} />
+						<Properties dev={dev} />
 					</Card>
 				)}
 			</Container>
