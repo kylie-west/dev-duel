@@ -22,9 +22,7 @@ export const Properties = ({ dev, winner }) => {
 						<ListItem key={index}>
 							<Label
 								className={
-									!winner
-										? ""
-										: property[0] === winner.winningProperty
+									winner && property[0] === winner.winningProperty
 										? "winner"
 										: ""
 								}>

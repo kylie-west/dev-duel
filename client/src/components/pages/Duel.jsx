@@ -19,8 +19,8 @@ const Duel = ({ devs, setDevs }) => {
 	});
 
 	const [winner, setWinner] = useState({
-		dev: {},
-		winningProperty: "",
+		dev: null,
+		winningProperty: null,
 		tie: false
 	});
 

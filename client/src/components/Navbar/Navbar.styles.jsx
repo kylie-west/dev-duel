@@ -30,7 +30,7 @@ export const MenuLink = styled(NavLink)`
 	font-size: 2rem;
 	color: #fff;
 	display: flex;
-	justify-content: space-between;
+	justify-content: center;
 	align-items: center;
 	padding: 1rem 2rem;
 	height: 100%;

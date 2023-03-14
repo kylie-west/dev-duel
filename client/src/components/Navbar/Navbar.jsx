@@ -17,9 +17,9 @@ const Navbar = () => {
 							activeStyle={{
 								transform: "traslateY(3rem)",
 								color: "#f0a431",
-								zoom: "1.5"
+								zoom: "1.25"
 							}}>
-							{"<--Dev-Duel-->"}
+							Dev Duel
 						</MenuLink>
 					</MenuItem>
 					<MenuItem>
@@ -29,7 +29,7 @@ const Navbar = () => {
 							activeStyle={{
 								transform: "traslateY(3rem)",
 								color: "#f0a431",
-								zoom: "1.5"
+								zoom: "1.25"
 							}}>
 							Inspect
 						</MenuLink>
@@ -41,7 +41,7 @@ const Navbar = () => {
 							activeStyle={{
 								transform: "traslateY(3rem)",
 								color: "#f0a431",
-								zoom: "1.5"
+								zoom: "1.25"
 							}}>
 							Duel
 						</MenuLink>
