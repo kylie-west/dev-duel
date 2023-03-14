@@ -1,8 +1,8 @@
 import { StyledCard, Message } from "./Card.styles";
 
-const Card = ({ dev, winner, children }) => {
+const Card = ({ dev, winner, children, directionMobile }) => {
 	return (
-		<StyledCard>
+		<StyledCard directionMobile={directionMobile}>
 			{!winner ? null : winner.dev === dev ? (
 				<Message>Winner!</Message>
 			) : (

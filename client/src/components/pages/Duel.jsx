@@ -100,13 +100,13 @@ const Duel = ({ devs, setDevs }) => {
 				<Button onClick={handleClick}>Duel</Button>
 			</Container>
 			{dev1 && dev2 ? (
-				<Container gap="25px">
-					<Card dev={dev1} winner={winner}>
+				<Container gap="25px" directionMobile="column">
+					<Card dev={dev1} winner={winner} directionMobile="column">
 						<Profile dev={dev1} />
 						<Properties dev={dev1} winner={winner} />
 					</Card>
 					<h1>VS</h1>
-					<Card dev={dev2} winner={winner}>
+					<Card dev={dev2} winner={winner} directionMobile="column">
 						<Profile dev={dev2} />
 						<Properties dev={dev2} winner={winner} />
 					</Card>

@@ -38,7 +38,7 @@ const Inspect = ({ devs, setDevs }) => {
 			</Container>
 			<Container>
 				{dev && (
-					<Card dev={dev}>
+					<Card dev={dev} directionMobile="column">
 						<Profile dev={dev} />
 						<Properties dev={dev} />
 					</Card>

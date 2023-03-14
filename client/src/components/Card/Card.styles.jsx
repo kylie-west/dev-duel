@@ -12,6 +12,12 @@ export const StyledCard = styled.div`
 	background-color: #fff;
 	border: 2px solid #000;
 	border-radius: 10px;
+
+	@media screen and (max-width: 900px) {
+		flex-direction: ${({ directionMobile }) => directionMobile};
+		align-items: center;
+		font-size: 12px;
+	}
 `;
 
 export const Message = styled.div`
