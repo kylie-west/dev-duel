@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const Card = styled.div`
 	display: flex;
-	align-items: center;
+	align-items: flex-start;
 	gap: 50px;
 	width: fit-content;
 	max-width: 90vw;

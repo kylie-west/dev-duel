@@ -6,7 +6,7 @@ export const Properties = ({ dev }) => {
 		["name"],
 		["location"],
 		["titles"],
-		["favorite-language", "fav language"],
+		["favorite-language", "favorite language"],
 		["total-stars", "total stars"],
 		["highest-starred", "highest star count"],
 		["public-repos", "public repos"],
@@ -22,7 +22,7 @@ export const Properties = ({ dev }) => {
 						<ListItem>
 							<Label>{property[1] || property[0]} </Label>
 							{property[0] === "titles" ? (
-								<Value>{dev["titles"].join(", ")}</Value>
+								<Value>{dev.titles.join(", ")}</Value>
 							) : (
 								<Value>{dev[property[0]]}</Value>
 							)}

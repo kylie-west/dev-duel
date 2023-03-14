@@ -8,5 +8,5 @@ export const Avatar = styled.img`
 `;
 
 export const Bio = styled.p`
-	max-width: 20ch;
+	width: 20ch;
 `;
