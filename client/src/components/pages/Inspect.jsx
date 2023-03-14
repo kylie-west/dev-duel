@@ -1,12 +1,27 @@
+import { useState } from "react";
 import { Page } from "./pageStyles";
-import { Button } from "../../components";
+import { Input, Button } from "../../components";
+import { inspectUser } from "../../services/userService";
 
-const Inspect = () => {
+const Inspect = ({ devs, setDevs }) => {
+	const [inputValue, setInputValue] = useState("");
+
+	const handleClick = async e => {
+		const user = await inspectUser(inputValue);
+		setDevs({ ...devs, dev1: user });
+		setInputValue("");
+	};
+
 	return (
 		<Page>
 			<div>
-				<input type="text" />
-				<Button>Inspect</Button>
+				<Input
+					type="text"
+					placeholder="username"
+					value={inputValue}
+					onChange={e => setInputValue(e.target.value)}
+				/>
+				<Button onClick={handleClick}>Inspect</Button>
 			</div>
 		</Page>
 	);
