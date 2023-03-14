@@ -101,14 +101,14 @@ const Duel = ({ devs, setDevs }) => {
 			</Container>
 			{dev1 && dev2 ? (
 				<Container gap="25px">
-					<Card>
+					<Card dev={dev1} winner={winner}>
 						<Profile dev={dev1} />
-						<Properties dev={dev1} />
+						<Properties dev={dev1} winner={winner} />
 					</Card>
 					<h1>VS</h1>
-					<Card>
+					<Card dev={dev2} winner={winner}>
 						<Profile dev={dev2} />
-						<Properties dev={dev2} />
+						<Properties dev={dev2} winner={winner} />
 					</Card>
 				</Container>
 			) : null}

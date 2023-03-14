@@ -9,6 +9,7 @@ export const List = styled.ul`
 
 export const ListItem = styled.li`
 	display: flex;
+	align-items: center;
 	gap: 10px;
 `;
 
@@ -16,6 +17,13 @@ export const Label = styled.div`
 	padding: 0 5px;
 	background-color: #c2d9e8;
 	border-radius: 5px;
+	&.winner {
+		background-color: #f0a431;
+		padding: 3px 8px;
+		& + span {
+			font-weight: 800;
+		}
+	}
 `;
 
 export const Value = styled.span`

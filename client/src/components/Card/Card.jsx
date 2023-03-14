@@ -1,16 +1,16 @@
-import styled from "styled-components";
+import { StyledCard, Message } from "./Card.styles";
 
-const Card = styled.div`
-	display: flex;
-	align-items: flex-start;
-	gap: 50px;
-	width: fit-content;
-	max-width: 90vw;
-	padding: 50px;
-	margin: 50px 0;
-	background-color: #fff;
-	border: 2px solid #000;
-	border-radius: 10px;
-`;
+const Card = ({ dev, winner, children }) => {
+	return (
+		<StyledCard>
+			{winner.dev === dev ? (
+				<Message>Winner!</Message>
+			) : (
+				winner.tie && <Message>Tie</Message>
+			)}
+			{children}
+		</StyledCard>
+	);
+};
 
 export default Card;

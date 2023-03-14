@@ -1,6 +1,6 @@
 import { List, ListItem, Label, Value } from "./Properties.styles";
 
-export const Properties = ({ dev }) => {
+export const Properties = ({ dev, winner }) => {
 	const propertyNames = [
 		["username"],
 		["name"],
@@ -18,9 +18,14 @@ export const Properties = ({ dev }) => {
 	return (
 		<List>
 			{dev
-				? propertyNames.map(property => (
-						<ListItem>
-							<Label>{property[1] || property[0]} </Label>
+				? propertyNames.map((property, index) => (
+						<ListItem key={index}>
+							<Label
+								className={
+									property[0] === winner.winningProperty ? "winner" : ""
+								}>
+								{property[1] || property[0]}{" "}
+							</Label>
 							{property[0] === "titles" ? (
 								<Value>{dev.titles.join(", ")}</Value>
 							) : (
