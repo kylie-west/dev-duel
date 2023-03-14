@@ -1,6 +1,12 @@
 import { useState } from "react";
-import { Page, Container } from "./pageStyles";
-import { Input, Button, Profile } from "../../components";
+import { Page } from "./pageStyles";
+import {
+	Container,
+	Input,
+	Button,
+	Profile,
+	Properties
+} from "../../components";
 import { inspectUser } from "../../services/userService";
 import Card from "../Card/Card";
 
@@ -12,7 +18,7 @@ const Inspect = ({ devs, setDevs }) => {
 			console.error(" Must enter a username to inspect");
 		} else {
 			const user = await inspectUser(inputValue);
-			setDevs({ ...devs, dev1: user });
+			setDevs({ dev1: user, dev2: null });
 		}
 		setInputValue("");
 	};
@@ -32,6 +38,7 @@ const Inspect = ({ devs, setDevs }) => {
 				{devs.dev1 && (
 					<Card>
 						<Profile dev={devs.dev1} />
+						<Properties dev={devs.dev1} />
 					</Card>
 				)}
 			</Container>

@@ -1,13 +1,14 @@
 import { Avatar, Bio } from "./Profile.styles";
-import { Properties } from "./Properties";
+import { Container } from "../../components";
 
 const Profile = ({ dev }) => {
+	const { avatar_url, bio } = dev;
+
 	return (
-		<>
-			<Avatar src={""} />
-			<Bio>{""} bio</Bio>
-			<Properties dev={dev} />
-		</>
+		<Container direction="column" gap="10px">
+			<Avatar src={avatar_url} />
+			<Bio>{bio}</Bio>
+		</Container>
 	);
 };
 

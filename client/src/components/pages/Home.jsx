@@ -1,5 +1,5 @@
-import { Page, Container } from "./pageStyles";
-import { Button } from "../../components";
+import { Page } from "./pageStyles";
+import { Container, Button } from "../../components";
 
 const Home = () => {
 	return (

@@ -1,6 +1,13 @@
 import { useState, useEffect } from "react";
-import { Page, Container } from "./pageStyles";
-import { Input, Button, Card, Profile } from "../../components";
+import { Page } from "./pageStyles";
+import {
+	Container,
+	Input,
+	Button,
+	Card,
+	Profile,
+	Properties
+} from "../../components";
 import { duelUsers } from "../../services/userService";
 
 const Duel = ({ devs, setDevs }) => {
@@ -49,9 +56,12 @@ const Duel = ({ devs, setDevs }) => {
 				<Container gap="25px">
 					<Card>
 						<Profile dev={devs.dev1} />
+						<Properties dev={devs.dev1} />
 					</Card>
+					<h1>VS</h1>
 					<Card>
 						<Profile dev={devs.dev2} />
+						<Properties dev={devs.dev2} />
 					</Card>
 				</Container>
 			) : null}
