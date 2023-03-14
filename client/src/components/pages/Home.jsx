@@ -1,4 +1,3 @@
-import styled from "styled-components";
 import { Page, Container } from "./pageStyles";
 import { Button } from "../../components";
 

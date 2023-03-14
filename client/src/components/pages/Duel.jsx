@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
-import styled from "styled-components";
 import { Page, Container } from "./pageStyles";
-import { Input, Button } from "../../components";
+import { Input, Button, Card, Profile } from "../../components";
 import { duelUsers } from "../../services/userService";
 
 const Duel = ({ devs, setDevs }) => {
@@ -21,14 +20,15 @@ const Duel = ({ devs, setDevs }) => {
 	};
 
 	useEffect(() => {
-		if (devs.dev1) {
+		// If user has already inspected a dev, auto-add dev username to input on Duel page for convenience
+		if (devs.dev1 && !devs.dev2) {
 			setForm({ ...form, inputValue1: devs.dev1.username });
 		}
 	}, []);
 
 	return (
 		<Page>
-			<Container gap="50px" direction="column">
+			<Container gap="25px" direction="column">
 				<Container gap="30px">
 					<Input
 						type="text"
@@ -45,6 +45,16 @@ const Duel = ({ devs, setDevs }) => {
 				</Container>
 				<Button onClick={handleClick}>Duel</Button>
 			</Container>
+			{devs.dev1 && devs.dev2 ? (
+				<Container gap="25px">
+					<Card>
+						<Profile dev={devs.dev1} />
+					</Card>
+					<Card>
+						<Profile dev={devs.dev2} />
+					</Card>
+				</Container>
+			) : null}
 		</Page>
 	);
 };

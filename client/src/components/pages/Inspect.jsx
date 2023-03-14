@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Page, Container } from "./pageStyles";
-import { Input, Button } from "../../components";
+import { Input, Button, Profile } from "../../components";
 import { inspectUser } from "../../services/userService";
+import Card from "../Card/Card";
 
 const Inspect = ({ devs, setDevs }) => {
 	const [inputValue, setInputValue] = useState("");
@@ -18,7 +19,7 @@ const Inspect = ({ devs, setDevs }) => {
 
 	return (
 		<Page>
-			<Container gap="50px" direction="column">
+			<Container gap="25px" direction="column">
 				<Input
 					type="text"
 					placeholder="username"
@@ -26,6 +27,13 @@ const Inspect = ({ devs, setDevs }) => {
 					onChange={e => setInputValue(e.target.value)}
 				/>
 				<Button onClick={handleClick}>Inspect</Button>
+			</Container>
+			<Container>
+				{devs.dev1 && (
+					<Card>
+						<Profile dev={devs.dev1} />
+					</Card>
+				)}
 			</Container>
 		</Page>
 	);
