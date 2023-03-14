@@ -1,11 +1,12 @@
 import { Page } from "./pageStyles";
+import { Button } from "../../components";
 
 const Inspect = () => {
 	return (
 		<Page>
 			<div>
 				<input type="text" />
-				<button>Inspect</button>
+				<Button>Inspect</Button>
 			</div>
 		</Page>
 	);

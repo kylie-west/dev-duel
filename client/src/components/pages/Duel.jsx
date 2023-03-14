@@ -1,11 +1,12 @@
 import { Page } from "./pageStyles";
+import { Button } from "../../components";
 
 const Duel = () => {
 	return (
 		<Page>
 			<div>
 				<input type="text" />
-				<button>Duel</button>
+				<Button>Duel</Button>
 			</div>
 		</Page>
 	);
