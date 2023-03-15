@@ -10,18 +10,12 @@ import {
 } from "../../components";
 import { duelUsers } from "../../services/userService";
 
-const Duel = ({ devs, setDevs }) => {
+const Duel = ({ devs, setDevs, winner, setWinner }) => {
 	const { dev1, dev2 } = devs;
 
 	const [form, setForm] = useState({
 		inputValue1: "",
 		inputValue2: ""
-	});
-
-	const [winner, setWinner] = useState({
-		dev: null,
-		winningProperty: null,
-		tie: false
 	});
 
 	const getWinner = (dev1, dev2) => {

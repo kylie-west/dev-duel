@@ -6,6 +6,12 @@ import { Navbar, Home, Inspect, Duel } from "./components";
 function App() {
 	const [devs, setDevs] = useState({ dev1: null, dev2: null });
 
+	const [winner, setWinner] = useState({
+		dev: null,
+		winningProperty: null,
+		tie: false
+	});
+
 	return (
 		<Router>
 			<GlobalStyles />
@@ -18,7 +24,12 @@ function App() {
 					<Inspect devs={devs} setDevs={setDevs} />
 				</Route>
 				<Route path="/duel">
-					<Duel devs={devs} setDevs={setDevs} />
+					<Duel
+						devs={devs}
+						setDevs={setDevs}
+						winner={winner}
+						setWinner={setWinner}
+					/>
 				</Route>
 			</Switch>
 		</Router>

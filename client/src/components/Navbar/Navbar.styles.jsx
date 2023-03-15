@@ -38,10 +38,10 @@ export const MenuLink = styled(NavLink)`
 
 	&:hover {
 		color: #f0a431;
-		/* transform: translateY(-5px); */
 	}
-	.selected {
-		/* transform: translateY(5px); */
-		color: #f0a431;
+
+	&.dev-duel {
+		font-family: Staatliches;
+		font-size: 24px;
 	}
 `;

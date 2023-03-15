@@ -5,7 +5,7 @@ const Home = () => {
 	return (
 		<Page>
 			<Container gap="50px" direction="column">
-				<h1>Welcome to Dev Duel</h1>
+				<h1>Welcome to Dev Duel.</h1>
 				<Container gap="30px">
 					<Button to="/inspect" width="150px">
 						Inspect

@@ -10,8 +10,9 @@ export const StyledCard = styled.div`
 	padding: 50px;
 	margin: 50px 0;
 	background-color: #fff;
-	border: 2px solid #000;
+	border: 1px solid rgba(0, 0, 0, 0.3);
 	border-radius: 10px;
+	box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.2);
 
 	@media screen and (max-width: 900px) {
 		flex-direction: ${({ directionMobile }) => directionMobile};

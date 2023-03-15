@@ -26,7 +26,7 @@ export const Properties = ({ dev, winner }) => {
 										? "winner"
 										: ""
 								}>
-								{property[1] || property[0]}{" "}
+								{property[1] || property[0]}
 							</Label>
 							{property[0] === "titles" ? (
 								<Value>{dev.titles.join(", ")}</Value>

@@ -6,12 +6,15 @@ const Input = styled.input`
 	height: 45px;
 	padding: 0 10px;
 	font-size: 18px;
-	background-color: #c2d9e8;
-	border: 1px solid #34373f;
+	background-color: #d5e0e8;
+	border: none;
 	border-radius: 10px;
+	box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3);
 
 	&:focus {
-		border: 2px;
+		outline: none;
+		background-color: #c2d9e8;
+		box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3);
 	}
 
 	&::placeholder {

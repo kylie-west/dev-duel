@@ -18,7 +18,8 @@ const Navbar = () => {
 								transform: "traslateY(3rem)",
 								color: "#f0a431",
 								zoom: "1.25"
-							}}>
+							}}
+							className="dev-duel">
 							Dev Duel
 						</MenuLink>
 					</MenuItem>
