@@ -25,7 +25,7 @@ body{
     line-height: 1.6;
     font-size: 1.6rem;
     background: #F9F9F9;
-    color: #333;
+    color: #000;
 
 }
 `;
