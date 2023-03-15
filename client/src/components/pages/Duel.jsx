@@ -25,34 +25,43 @@ const Duel = ({ devs, setDevs }) => {
 	});
 
 	const getWinner = (dev1, dev2) => {
-		const stars1 = dev1["total-stars"];
-		const stars2 = dev2["total-stars"];
-		const followers1 = dev1.followers;
-		const followers2 = dev2.followers;
-		const repos1 = dev1["public-repos"];
-		const repos2 = dev2["public-repos"];
+		const properties = [
+			{
+				name: "total-stars",
+				dev1: dev1["total-stars"],
+				dev2: dev2["total-stars"]
+			},
+			{ name: "followers", dev1: dev1.followers, dev2: dev2.followers },
+			{
+				name: "public-repos",
+				dev1: dev1["public-repos"],
+				dev2: dev2["public-repos"]
+			}
+		];
 
-		if (stars1 > stars2) {
-			return { ...winner, dev: dev1, winningProperty: "total-stars" };
-		} else if (stars1 < stars2) {
-			return { ...winner, dev: dev2, winningProperty: "total-stars" };
+		const result = { ...winner };
+
+		// First compare stars, then followers, then repos
+		properties.forEach(property => {
+			if (result.dev) return;
+
+			// Property being compared
+			result.winningProperty = property.name;
+
+			// Compare each dev's values and set winner
+			if (property.dev1 > property.dev2) {
+				result.dev = dev1;
+			} else if (property.dev1 < property.dev2) {
+				result.dev = dev2;
+			}
+		});
+
+		// If still no winner, declare tie
+		if (!result.dev) {
+			result.tie = true;
 		}
 
-		// # stars same -> compare # followers
-		if (followers1 > followers2) {
-			return { ...winner, dev: dev1, winningProperty: "followers" };
-		} else if (followers1 < followers2) {
-			return { ...winner, dev: dev2, winningProperty: "followers" };
-		}
-
-		// # followers same -> compare # repos
-		if (repos1 > repos2) {
-			return { ...winner, dev: dev1, winningProperty: "public-repos" };
-		} else if (repos1 < repos2) {
-			return { ...winner, dev: dev2, winningProperty: "public-repos" };
-		}
-
-		return { ...winner, tie: true };
+		return result;
 	};
 
 	const handleClick = async e => {
