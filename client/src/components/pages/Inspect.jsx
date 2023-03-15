@@ -4,24 +4,33 @@ import {
 	Container,
 	Input,
 	Button,
+	Card,
 	Profile,
-	Properties
+	Properties,
+	Error
 } from "../../components";
 import { inspectUser } from "../../services/userService";
-import Card from "../Card/Card";
 
-const Inspect = ({ devs, setDevs }) => {
+const Inspect = ({ devs, setDevs, errors, setErrors, getErrorMsg }) => {
 	const dev = devs.dev1;
+	const error = errors.inspect;
 
 	const [inputValue, setInputValue] = useState("");
 
 	const handleClick = async e => {
 		if (!inputValue) {
-			console.error(" Must enter a username to inspect");
-		} else {
-			const user = await inspectUser(inputValue);
-			setDevs({ dev1: user, dev2: null });
+			setErrors({ ...errors, inspect: "You forgot to enter a username!" });
+			return;
 		}
+
+		const data = await inspectUser(inputValue);
+		if (!data.username) {
+			setErrors({ ...errors, inspect: data.message });
+			return;
+		}
+
+		setErrors({ ...errors, inspect: "" });
+		setDevs({ dev1: data, dev2: null });
 		setInputValue("");
 	};
 
@@ -32,8 +41,12 @@ const Inspect = ({ devs, setDevs }) => {
 					type="text"
 					placeholder="username"
 					value={inputValue}
-					onChange={e => setInputValue(e.target.value)}
+					onChange={e => {
+						setInputValue(e.target.value);
+						setErrors({ ...errors, inspect: "" });
+					}}
 				/>
+				{error && <Error>{getErrorMsg(error)}</Error>}
 				<Button onClick={handleClick}>Inspect</Button>
 			</Container>
 			<Container>

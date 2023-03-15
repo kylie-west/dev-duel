@@ -6,12 +6,22 @@ import {
 	Button,
 	Card,
 	Profile,
-	Properties
+	Properties,
+	Error
 } from "../../components";
 import { duelUsers } from "../../services/userService";
 
-const Duel = ({ devs, setDevs, winner, setWinner }) => {
+const Duel = ({
+	devs,
+	setDevs,
+	winner,
+	setWinner,
+	errors,
+	setErrors,
+	getErrorMsg
+}) => {
 	const { dev1, dev2 } = devs;
+	const error = errors.duel;
 
 	const [form, setForm] = useState({
 		inputValue1: "",
@@ -60,16 +70,24 @@ const Duel = ({ devs, setDevs, winner, setWinner }) => {
 
 	const handleClick = async e => {
 		if (!form.inputValue1 || !form.inputValue2) {
-			console.error("Must enter both usernames to duel");
+			setErrors({
+				...errors,
+				duel: "You have to enter both usernames to duel."
+			});
 			return;
 		}
 
-		// Reset winner
-		setWinner({ dev: null, winningProperty: null, tie: false });
+		const data = await duelUsers(form.inputValue1, form.inputValue2);
+		if (!Array.isArray(data)) {
+			setErrors({ ...errors, duel: data.message });
+			return;
+		}
+		const dev1 = data[0];
+		const dev2 = data[1];
 
-		const userData = await duelUsers(form.inputValue1, form.inputValue2);
-		const dev1 = userData[0];
-		const dev2 = userData[1];
+		// Reset winner & error
+		setWinner({ dev: null, winningProperty: null, tie: false });
+		setErrors({ ...errors, duel: "" });
 
 		setDevs({ dev1, dev2 });
 		setWinner(getWinner(dev1, dev2));
@@ -81,6 +99,7 @@ const Duel = ({ devs, setDevs, winner, setWinner }) => {
 		if (dev1 && !dev2) {
 			setForm({ ...form, inputValue1: dev1.username });
 		}
+		// eslint-disable-next-line
 	}, []);
 
 	return (
@@ -91,15 +110,22 @@ const Duel = ({ devs, setDevs, winner, setWinner }) => {
 						type="text"
 						placeholder="username 1"
 						value={form.inputValue1}
-						onChange={e => setForm({ ...form, inputValue1: e.target.value })}
+						onChange={e => {
+							setForm({ ...form, inputValue1: e.target.value });
+							setErrors({ ...errors, duel: "" });
+						}}
 					/>
 					<Input
 						type="text"
 						placeholder="username 2"
 						value={form.inputValue2}
-						onChange={e => setForm({ ...form, inputValue2: e.target.value })}
+						onChange={e => {
+							setForm({ ...form, inputValue2: e.target.value });
+							setErrors({ ...errors, duel: "" });
+						}}
 					/>
 				</Container>
+				{error && <Error>{getErrorMsg(error)}</Error>}
 				<Button onClick={handleClick}>Duel</Button>
 			</Container>
 			{dev1 && dev2 ? (
