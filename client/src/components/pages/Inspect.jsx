@@ -7,7 +7,8 @@ import {
 	Card,
 	Profile,
 	Properties,
-	Error
+	Error,
+	LoadingSpinner
 } from "../../components";
 import { inspectUser } from "../../services/userService";
 
@@ -16,6 +17,7 @@ const Inspect = ({ devs, setDevs, errors, setErrors, getErrorMsg }) => {
 	const error = errors.inspect;
 
 	const [inputValue, setInputValue] = useState("");
+	const [loading, setLoading] = useState(false);
 
 	const handleClick = async e => {
 		if (!inputValue) {
@@ -23,14 +25,18 @@ const Inspect = ({ devs, setDevs, errors, setErrors, getErrorMsg }) => {
 			return;
 		}
 
+		setLoading(true);
+
 		const data = await inspectUser(inputValue);
 		if (!data.username) {
 			setErrors({ ...errors, inspect: data.message });
+			setLoading(false);
 			return;
 		}
 
 		setErrors({ ...errors, inspect: "" });
 		setDevs({ dev1: data, dev2: null });
+		setLoading(false);
 		setInputValue("");
 	};
 
@@ -47,8 +53,13 @@ const Inspect = ({ devs, setDevs, errors, setErrors, getErrorMsg }) => {
 					}}
 				/>
 				{error && <Error>{getErrorMsg(error)}</Error>}
-				<Button onClick={handleClick}>Inspect</Button>
+				{loading ? (
+					<LoadingSpinner />
+				) : (
+					<Button onClick={handleClick}>Inspect</Button>
+				)}
 			</Container>
+
 			<Container>
 				{dev && (
 					<Card dev={dev} directionMobile="column">

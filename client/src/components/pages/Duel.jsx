@@ -7,7 +7,8 @@ import {
 	Card,
 	Profile,
 	Properties,
-	Error
+	Error,
+	LoadingSpinner
 } from "../../components";
 import { duelUsers } from "../../services/userService";
 
@@ -23,6 +24,7 @@ const Duel = ({
 	const { dev1, dev2 } = devs;
 	const error = errors.duel;
 
+	const [loading, setLoading] = useState(false);
 	const [form, setForm] = useState({
 		inputValue1: "",
 		inputValue2: ""
@@ -77,9 +79,11 @@ const Duel = ({
 			return;
 		}
 
+		setLoading(true);
 		const data = await duelUsers(form.inputValue1, form.inputValue2);
 		if (!Array.isArray(data)) {
 			setErrors({ ...errors, duel: data.message });
+			setLoading(false);
 			return;
 		}
 		const dev1 = data[0];
@@ -90,6 +94,7 @@ const Duel = ({
 		setErrors({ ...errors, duel: "" });
 
 		setDevs({ dev1, dev2 });
+		setLoading(false);
 		setWinner(getWinner(dev1, dev2));
 		setForm({ inputValue1: "", inputValue2: "" });
 	};
@@ -126,7 +131,11 @@ const Duel = ({
 					/>
 				</Container>
 				{error && <Error>{getErrorMsg(error)}</Error>}
-				<Button onClick={handleClick}>Duel</Button>
+				{loading ? (
+					<LoadingSpinner />
+				) : (
+					<Button onClick={handleClick}>Duel</Button>
+				)}
 			</Container>
 			{dev1 && dev2 ? (
 				<Container gap="25px" directionMobile="column">
