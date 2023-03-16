@@ -28,4 +28,5 @@ export const Message = styled.div`
 	transform: translateX(-50%);
 	font-size: 30px;
 	font-weight: 800;
+	color: #f0a431;
 `;

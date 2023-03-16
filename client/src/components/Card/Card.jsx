@@ -4,7 +4,7 @@ const Card = ({ dev, winner, children, directionMobile }) => {
 	return (
 		<StyledCard directionMobile={directionMobile}>
 			{!winner ? null : winner.dev === dev ? (
-				<Message>Winner!</Message>
+				<Message>Winner! 🎉</Message>
 			) : (
 				winner.tie && <Message>Tie</Message>
 			)}
