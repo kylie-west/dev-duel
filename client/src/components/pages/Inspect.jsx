@@ -19,7 +19,7 @@ const Inspect = ({ devs, setDevs, errors, setErrors, getErrorMsg }) => {
 	const [inputValue, setInputValue] = useState("");
 	const [loading, setLoading] = useState(false);
 
-	const handleClick = async e => {
+	const handleSubmit = async () => {
 		if (!inputValue) {
 			setErrors({ ...errors, inspect: "You forgot to enter a username!" });
 			return;
@@ -40,6 +40,12 @@ const Inspect = ({ devs, setDevs, errors, setErrors, getErrorMsg }) => {
 		setInputValue("");
 	};
 
+	const handleKeyDown = e => {
+		if (e.key === "Enter") {
+			handleSubmit();
+		}
+	};
+
 	return (
 		<Page>
 			<Container gap="25px" direction="column">
@@ -51,12 +57,13 @@ const Inspect = ({ devs, setDevs, errors, setErrors, getErrorMsg }) => {
 						setInputValue(e.target.value);
 						setErrors({ ...errors, inspect: "" });
 					}}
+					onKeyDown={handleKeyDown}
 				/>
 				{error && <Error>{getErrorMsg(error)}</Error>}
 				{loading ? (
 					<LoadingSpinner />
 				) : (
-					<Button onClick={handleClick}>Inspect</Button>
+					<Button onClick={handleSubmit}>Inspect</Button>
 				)}
 			</Container>
 

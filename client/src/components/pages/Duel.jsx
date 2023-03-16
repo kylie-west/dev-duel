@@ -45,7 +45,7 @@ const Duel = ({
 			}
 		];
 
-		const result = { ...winner };
+		const result = {};
 
 		// First compare stars, then followers, then repos
 		properties.forEach(property => {
@@ -70,7 +70,7 @@ const Duel = ({
 		return result;
 	};
 
-	const handleClick = async e => {
+	const handleSubmit = async () => {
 		if (!form.inputValue1 || !form.inputValue2) {
 			setErrors({
 				...errors,
@@ -97,6 +97,12 @@ const Duel = ({
 		setLoading(false);
 		setWinner(getWinner(dev1, dev2));
 		setForm({ inputValue1: "", inputValue2: "" });
+	};
+
+	const handleKeyDown = e => {
+		if (e.key === "Enter") {
+			handleSubmit();
+		}
 	};
 
 	useEffect(() => {
@@ -128,13 +134,14 @@ const Duel = ({
 							setForm({ ...form, inputValue2: e.target.value });
 							setErrors({ ...errors, duel: "" });
 						}}
+						onKeyDown={handleKeyDown}
 					/>
 				</Container>
 				{error && <Error>{getErrorMsg(error)}</Error>}
 				{loading ? (
 					<LoadingSpinner />
 				) : (
-					<Button onClick={handleClick}>Duel</Button>
+					<Button onClick={handleSubmit}>Duel</Button>
 				)}
 			</Container>
 			{dev1 && dev2 ? (
