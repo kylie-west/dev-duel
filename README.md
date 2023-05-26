@@ -1,48 +1,34 @@
-# React Dev Duel
-# Assignment Overview
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-For this assignment, students are tasked with developing a small full-stack application that interfaces with [GitHub's API](https://developer.github.com/v3/) in order to aggregate, transform, and display a given user's profile and repository data.  
+## Getting Started
 
-The assignment is composed of two independent pieces that make up a simple full-stack application.
-	
-1. A [Node](https://nodejs.org/en/docs/) **server** exposing an API using [Express](https://expressjs.com/en/api.html)
-2. A Web-based **client** using [HTML](https://developer.mozilla.org/en-US/docs/Learn/HTML), [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS), [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript), [Styled Components](https://styled-components.com/), [ReactJS](https://reactjs.org/), and [Create React App](https://github.com/facebook/create-react-app)
+First, run the development server:
 
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+```
 
-This specification is split into multiple parts. 
-- [Assignment Overview](README.md) - Gives a general overview of the assignment and technical requirements
-- [Development](DEVELOPMENT.md) - Instructions on setting up development environment and servers
-- [Server](server/README.md) - Information specific to Node API implementation
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
----
+You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
 
-## Requirements Overview
+This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-Students will implement a web application to communicate with a provided supporting API to get the following data for a given user's GitHub profile. The backend has been implemented as a Node API using Express that will call GitHub's API to fetch data necessary to derive/display the data specified. The user will see a home page where they can choose between two options: **inspect** or **duel**.
+## Learn More
 
-## Token setup
+To learn more about Next.js, take a look at the following resources:
 
-In order to increase your rate limit with the GitHub API and improve overall testability of your application as you develop, you will need to create and use a GitHub token. Instructions for this process are included in the [token-setup/README.md](token-setup/README.md).
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-# Getting Started with the Client
-Students will build a client side application using React. The app will consist of a Home Page, an Inspect Page, and a Duel Page. Refer to the wireframe below as a basic guideline for the structure.
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-The service calls have been provided in [UserService Client](https://github.com/fasttrackd-student-work/react-dev-duel/blob/main/client/src/services/userService.jsx).
+## Deploy on Vercel
 
-### Inspect
-On the **inspect** page, a client will enter a username, submit, and be displayed the user's `profile` data.
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-### Duel
-For the **duel** page, it is left up to the student to choose how a winner is determined. Two usernames will be entered, submitted, and their `profile` data displayed. Using the fields that are received from the API and displayed to the user, the student will need to visually signify differences in the data displayed as well as make an overall winner apparent to the user.
-
-## Error Handling
-Display the error messages given by the API.
-
----
-
-### Wireframe
-[Figma Wireframe](https://www.figma.com/file/nas0hU6wALYMd22JjSRzbz/Dev-Duel?node-id=0%3A1)
-
-## As mentioned in the Assessment Overview at the top of this page, additional information and token setup for the server can be found in its respective folder `README.md`.
-
-#### [server/README.md](server/README.md)
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
