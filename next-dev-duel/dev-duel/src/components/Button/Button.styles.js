@@ -4,7 +4,6 @@ export const StyledButton = styled.button`
   width: ${({ width }) => width};
   height: ${({ height }) => height};
   padding: 10px 40px;
-  font-size: 18px;
   border: 2px solid #000;
   border-radius: 10px;
   font-size: 24px;
