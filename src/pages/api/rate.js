@@ -10,6 +10,8 @@ export default async function handler(req, res) {
   axios
     .get(`http://api.github.com/rate_limit`, {
       headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
         Authorization: token,
       },
     })
