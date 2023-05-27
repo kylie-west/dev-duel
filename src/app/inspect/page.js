@@ -36,6 +36,7 @@ export default function Page() {
     setLoading(true);
 
     const data = await inspectUser(inputValue);
+    console.log(data);
     if (!data.username) {
       setState({
         ...state,
