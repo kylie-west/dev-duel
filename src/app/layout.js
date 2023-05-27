@@ -19,8 +19,10 @@ export default function RootLayout({ children }) {
       <AppProvider>
         <GlobalStyles />
         <body>
-          <Navbar />
-          <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
+          <StyledComponentsRegistry>
+            <Navbar />
+            {children}
+          </StyledComponentsRegistry>
         </body>
       </AppProvider>
     </html>

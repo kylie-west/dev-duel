@@ -38,7 +38,10 @@ export const getUserAndRepos = (username) =>
           Authorization: token,
         },
       })
-      .then((res) => res.data),
+      .then((res) => {
+        console.log(res);
+        return res.data;
+      }),
     axios
       .get(`http://api.github.com/users/${username}/repos`, {
         headers: {
