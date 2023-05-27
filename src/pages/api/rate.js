@@ -1,18 +1,6 @@
-import axios from "axios";
-
 const token = "token" + " " + process.env.TOKEN;
 
 export default async function handler(req, res) {
-  // axios
-  //   .get(`http://api.github.com/rate_limit`, {
-  //     headers: {
-  //       Accept: "application/json",
-  //       "Content-Type": "application/json",
-  //       Authorization: token,
-  //     },
-  //   })
-  //   .then(({ data }) => res.json(data));
-
   fetch("http://api.github.com/rate_limit", {
     method: "GET",
     headers: {

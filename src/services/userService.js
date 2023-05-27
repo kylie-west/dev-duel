@@ -1,6 +1,4 @@
-import axios from "axios";
-
-const token = "Bearer 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";
+const token = "token" + " " + process.env.TOKEN;
 const inspectUserUrl = "/api/user/";
 const duelUsersUrl = "/api/users/";
 
@@ -32,23 +30,41 @@ export const duelUsers = async (user1 = "fabpot", user2 = "andrew") => {
 
 export const getUserAndRepos = (username) =>
   Promise.all([
-    axios
-      .get(`http://api.github.com/users/${username}`, {
-        headers: {
-          Authorization: token,
-        },
+    fetch(`http://api.github.com/users/${username}`, {
+      headers: {
+        Authorization: token,
+      },
+    })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        }
+        throw new Error("Network response was not ok.");
       })
-      .then((res) => {
-        console.log(res);
-        return res.data;
+      .then((data) => {
+        return data;
+      })
+      .catch((error) => {
+        console.log("Error: ", error);
       }),
-    axios
-      .get(`http://api.github.com/users/${username}/repos`, {
-        headers: {
-          Authorization: token,
-        },
+
+    fetch(`http://api.github.com/users/${username}/repos`, {
+      headers: {
+        Authorization: token,
+      },
+    })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        }
+        throw new Error("Network response was not ok.");
       })
-      .then((res) => res.data),
+      .then((data) => {
+        return data;
+      })
+      .catch((error) => {
+        console.log("Error: ", error);
+      }),
   ]).then(([user, repos]) => userMapper(user, repos));
 
 const onlyUnique = (array) => [...new Set(array)];
