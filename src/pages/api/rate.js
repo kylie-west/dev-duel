@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const token = process.env.TOKEN;
+const token = "token" + " " + process.env.TOKEN;
 
 export default async function handler(req, res) {
   if (!token) {
