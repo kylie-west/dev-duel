@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const token = "token" + " " + process.env.TOKEN;
+const token = "token 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";
 const inspectUserUrl = "/api/user/";
 const duelUsersUrl = "/api/users/";
 
